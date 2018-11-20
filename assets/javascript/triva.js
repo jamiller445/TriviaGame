@@ -5,14 +5,14 @@ var losses;
 var unanswerd;
 // var time = 30;
 
-var number = 10;
+var number = 30;
 var isRunning = false;
 
     //  Variable that will hold our interval ID when we execute
     //  the "run" function
 var intervalId;
 
-var ques = 1;
+var ques = 0;
 
 
 var trivaQ = { 
@@ -35,8 +35,11 @@ var trivaQ = {
                     },
                     {
                     qText: "What is your best source of help during Coding BootCamp?",
-                    aText: "Your neighbor siting next to you",
-                    multipleChoices: ["wrong3,1", "wrong3,2", "wrong3,3"]
+                    aText: 3,
+                    multipleChoices: ["wrong3,1", 
+                                      "wrong3,2",
+                                      "wrong3,3",
+                                      "Your neighbor siting next to you"]
                     }
                 ]
         
@@ -54,10 +57,11 @@ var trivaQ = {
 
     // ********************  function definitions  ********************************
 
-    function getQuestion(ques) {
-      console.log("qNum is type= " + typeof ques);
-      console.log("qNum = " + ques);
-        i = ques;
+    function getQuestion(q) {
+      i = q;
+      console.log("qNum is type= " + typeof i);
+      console.log("qNum = " + i);
+        
         
         $("#show-question").html("<h3>" + trivaQ.arrayOfQ[i].qText + "</h3>");
         for (mc = 0; mc < 4; mc++){
@@ -69,10 +73,12 @@ var trivaQ = {
         };
       };
 
-    function getAnswer(ques){
-        i = ques;
+    function getAnswer(q){
+        i = q;
         console.log("question number in getAnswer= " + i);
-        $("#show-answer").html("<h4>" + trivaQ.arrayOfQ[i].multipleChoices[trivaQ.arrayOfQ[i].aText] + "</h4>")
+        $("#show-answer").html("<h4>" + trivaQ.arrayOfQ[i].multipleChoices[trivaQ.arrayOfQ[i].aText] + "</h4>");
+        // $("#show-status").show();
+        // $("#show-answer").show();
         // $("#").html("<h4>" + trivaQ.arrayOfQ[i].multipleChoices[trivaQ.arrayOfQ[i].aText] + "</h4>")
       };
 
@@ -106,7 +112,7 @@ var trivaQ = {
           stop();
   
           //  Alert the user that time is up.
-          alert("Time Up!");
+          alert("Time Up! The game has ended");
           isRunning = false;
         }
       }
@@ -121,6 +127,8 @@ var trivaQ = {
         $("#questionAndChoices").hide()
         $("#show-status").html("<h4>Out of Time!</h4><h4>The Correct Answer was:</h4>");
         getAnswer(ques);
+        isRunning = false;
+        console.log("isRunning in stop= " + isRunning);
 
       }
   
@@ -131,12 +139,16 @@ var trivaQ = {
 // *********************************************************  
 function startGame() {
     // alert("Game has started");
-
-    $("#start-button").hide()
+    
+    $("#start-button").hide();
+    
     run();
-    // decrement();
+    // isRunning=true;
+
+    // do {
     getQuestion(ques);
     playGame(ques);
+    // } while ( isRunning);
 
   //   do {
   //     isRunning = true;
@@ -150,14 +162,38 @@ function startGame() {
     // getQuestion(ques);
 };
 
-function playGame(ques) {
-  i = ques;
+function playGame(q) {
+  i = q;
+  console.log("isRunning in playGame= " + isRunning);
   $(document).on("click", ".choices", function() {
-    dataChoice = $(this).attr('data')
-    console.log("answer selected= " + dataChoice + " correct answer= " + trivaQ.arrayOfQ[i].aText);
-    console.log("the correct answer is= " + trivaQ.arrayOfQ[i].multipleChoices[trivaQ.arrayOfQ[i].aText]);
+    dataChoice = parseInt($(this).attr('data'));
+
+    if ( dataChoice === trivaQ.arrayOfQ[i].aText){
+      alert("You have a correct answer");
+      nextq = i + 1;
+      getQuestion(nextq);
+    }
+    else {
+      
+      $("#questionAndChoices").hide();
+      $("#show-status").html("<h4>Wrong Answer</h4><h4>The Correct Answer was:</h4>");
+
+      getAnswer(i);
+  
+      $("#show-answer").hide();
+      $("#show-status").hide();
+      
+      alert("builtin wait before next question");
+      nextq = i + 1;
+      getQuestion(nextq);
+      $("#questionAndChoices").show();
+      
+    }
+  console.log("answer selected= " + typeof dataChoice + " correct answer= " + typeof trivaQ.arrayOfQ[i].aText);
+  console.log("the correct answer is= " + trivaQ.arrayOfQ[i].multipleChoices[trivaQ.arrayOfQ[i].aText]);
   });
+
 };
 
-// ************  main  ******************
+
 
