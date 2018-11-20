@@ -1,0 +1,88 @@
+
+<!-- triva game.html -->
+
+<!DOCTYPE html>
+<html lang="en-us">
+    <title>Triva Time</title>
+
+<head>
+<!-- Bring in our bootstrap stylesheet -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="assets/javascript/triva.js"></script>
+    <style>
+        /* * {
+            box-sizing: border-box;
+            text-align: center;
+        } */
+        
+        .gamebox {
+            width: 33%;
+            background-color: silver;
+        }
+        #jumbotron-1{
+            display: none;
+        }
+
+        #h-1 {
+            /* display: inline-block; */
+            /* display: none; */
+        }
+        #status {
+            float:right;
+        }
+
+        .testBox{
+            margin: auto;
+            text-align: center;
+            margin: 10%;
+            height: 500px;
+            width: 80%;
+            background-color: teal;
+            padding-top: 10px;
+        }
+
+        .choices:hover{
+            margin: auto;
+            width: 50%;
+            background-color: palevioletred;
+        } */
+
+    </style>
+    </head>
+    <body>
+
+        <div class="testBox">
+            <h1>Time to Play the Triva Game</h1>
+            <button id="start-button" type="button" onclick="startGame()">Click Me To Start</button>
+            
+            <div id="show-number"></div>
+            <div id="questionAndChoices">
+                <div id="show-question"></div>
+                <!-- <div class="choices"> -->
+                    <div id="show-choices0"></div>
+                    <div id="show-choices1"></div>
+                    <div id="show-choices2"></div>
+                    <div id="show-choices3"></div>
+                <!-- </div> -->
+            </div>
+                <div id="show-status"></div>
+                <div id="show-answer"></div>
+            
+        </div>
+
+
+        <!-- <div class="container">
+                
+            <div id="myJumbotron-0" class="jumbotron">
+                <h1>Welcome to Guess the Doggie</h1>
+                <p>Guess the name of a dog breed by entering the letters in the breed name.</p>
+                <p><a class="btn btn-lg btn-primary" onclick="game.turnOffWelcome();game.runGame()">Let's Play</a></p>
+            </div> -->
+
+
+    </body>
+    </html>
