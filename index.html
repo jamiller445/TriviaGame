@@ -27,10 +27,6 @@
             display: none;
         }
 
-        #h-1 {
-            /* display: inline-block; */
-            /* display: none; */
-        }
         #status {
             float:right;
         }
@@ -67,7 +63,7 @@
             background-color: palevioletred;
         } */
 
-        .button {
+        .button, .reset-button {
             background-color: teal;
             /* background-color: #4CAF50; */
             border: none;
@@ -78,11 +74,11 @@
             cursor: pointer;
         }
 
-        .button:hover {
+        .button:hover , .reset-button:hover {
             background-color: green;
         }
 
-        #restart {
+        #restart, #show-score {
             display: none;
         }
 
@@ -106,21 +102,12 @@
             </div>
                 <div id="show-status"></div>
                 <div id="show-answer"></div>
+                <div id="show-score"></div>
                
                 <button class="reset-button" id="restart" type="button" onclick="startGame()">Restart Game</button>
                
             
         </div>
-
-
-        <!-- <div class="container">
-                
-            <div id="myJumbotron-0" class="jumbotron">
-                <h1>Welcome to Guess the Doggie</h1>
-                <p>Guess the name of a dog breed by entering the letters in the breed name.</p>
-                <p><a class="btn btn-lg btn-primary" onclick="game.turnOffWelcome();game.runGame()">Let's Play</a></p>
-            </div> -->
-
 
     </body>
     </html>

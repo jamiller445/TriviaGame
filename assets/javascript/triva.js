@@ -7,7 +7,7 @@ var losses;
 var unanswerd;
 // var time = 30;
 
-var timer = 60;
+var timer = 10;
 var number = timer;
 
 var choice = 0;
@@ -112,18 +112,56 @@ var trivaQ = {
             
           $("#show-status").html("<h4>Out of Time!</h4><h4>The Correct Answer was:</h4>");
         //   $("#show-answer").html("<h6>" + trivaQ.arrayOfQ[i].multipleChoices[trivaQ.arrayOfQ[i].aText] + "</h6>")
-        
+
                
            //  ...run the stop function.
           stop();
-  
+          getAnswer(ques);
+          $("#show-status").show();
+          $("#show-answer").show();
+
           //  Alert the user that time is up.
-          alert("Time Up! The game has ended");
-          isRunning = false;
+          // alert("Time Up! The game has ended");
+
+          ques++;
+
+      if (ques < trivaQ.arrayOfQ.length) {
+
+        // wait for a few seconds then show next question
+
+        number = timer;        
+
+        // $("#show-question", "#show-choices0", 
+        //   "#show-choices1", "#show-choices2",
+        //   "#show-choices3").empty();
+
+          setTimeout(startGame,3000);
+
+         }
+         else {
+
+          //  display restart game button
+          ques = 0;
+          number = timer;
+
+          console.log("ques1= " + ques);
+          console.log("qnum1= " + qNum);
+
+          $("#restart").show()
+
+         }
+      
+    
+          
+// *****************************************************
+
         }
       }
-  
-      //  The stop function
+
+// ******  end of decrement  ***********  
+
+
+//  The stop function
     function stop() {
 
         //  Clears our intervalId
@@ -175,11 +213,14 @@ function playGame(q) {
     if ( dataChoice === trivaQ.arrayOfQ[qNum].aText){
       // alert("You have a correct answer");
 
+      // answer is correct
+
       $("#show-status").show();
       $("#show-answer").show(); 
       
       stop();
       number = timer;
+      wins++;
       
       $("#show-status").html("<h4>Correct</h4><h4>The Answer was:</h4>");
 
@@ -190,9 +231,7 @@ function playGame(q) {
 
       if (ques < trivaQ.arrayOfQ.length) {
 
-        // $("#show-question", "#show-choices0", 
-        //   "#show-choices1", "#show-choices2",
-        //   "#show-choices3").empty();
+        // wait for a few seconds then show next question
 
         // setTimeout(console.log("we are in timeout for 5 sec"), 1000 * 5);
           setTimeout(startGame,3000);
@@ -202,10 +241,9 @@ function playGame(q) {
 
           //  display restart game button
           ques = 0;
-          qNum = 0;
-
-          console.log("ques1= " + ques);
-          console.log("qnum1= " + qNum);
+          
+          $("#show-score").html("<h4>Correct</h4><h4>The Answer was:</h4>");
+          $("#show-score").show();
 
           $("#restart").show()
 
@@ -219,6 +257,8 @@ function playGame(q) {
       $("#questionAndChoices").hide();
 
       stop();
+      number = timer;
+      losses++;
 
       $("#show-status").show();
       $("#show-answer").show();
@@ -241,7 +281,7 @@ function playGame(q) {
 
           //  display restart game button
           ques = 0;
-          qNum = 0;
+          
 
           console.log("ques2= " + ques);
           console.log("qnum2= " + qNum);
