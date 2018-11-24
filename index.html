@@ -45,11 +45,46 @@
             padding-top: 10px;
         }
 
-        .choices:hover{
+        /* .choices{
+            display: none;
+            background-color: teal;
+            /* background-color: #4CAF50; */
+            /* border: none;
+            color: white;
+            padding: 15px 25px;
+            text-align: center;
+            font-size: 16px;
+            cursor: pointer;
+        }  */
+
+        /* .choices:hover{
+            background-color: green;  
+        } */
+
+        /* .choices:hover{
             margin: auto;
             width: 50%;
             background-color: palevioletred;
         } */
+
+        .button {
+            background-color: teal;
+            /* background-color: #4CAF50; */
+            border: none;
+            color: white;
+            padding: 15px 25px;
+            text-align: center;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .button:hover {
+            background-color: green;
+        }
+
+        #restart {
+            display: none;
+        }
 
     </style>
     </head>
@@ -57,20 +92,23 @@
 
         <div class="testBox">
             <h1>Time to Play the Triva Game</h1>
-            <button id="start-button" type="button" onclick="startGame()">Click Me To Start</button>
+            <button class="button" id="start-button" type="button" onclick="startGame()">Click Me To Start</button>
             
             <div id="show-number"></div>
             <div id="questionAndChoices">
                 <div id="show-question"></div>
-                <!-- <div class="choices"> -->
-                    <div id="show-choices0"></div>
-                    <div id="show-choices1"></div>
-                    <div id="show-choices2"></div>
-                    <div id="show-choices3"></div>
+                    <!-- <div class="choices"> -->
+                    <div class="choices" id="show-choices0"></div>
+                    <div class="choices" id="show-choices1"></div>
+                    <div class="choices" id="show-choices2"></div>
+                    <div class="choices" id="show-choices3"></div>
                 <!-- </div> -->
             </div>
                 <div id="show-status"></div>
                 <div id="show-answer"></div>
+               
+                <button class="reset-button" id="restart" type="button" onclick="startGame()">Restart Game</button>
+               
             
         </div>
 
