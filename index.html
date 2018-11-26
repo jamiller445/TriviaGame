@@ -78,7 +78,7 @@
             background-color: green;
         }
 
-        #restart, #show-score {
+        #restart, .show-score {
             display: none;
         }
 
@@ -102,7 +102,11 @@
             </div>
                 <div id="show-status"></div>
                 <div id="show-answer"></div>
-                <div id="show-score"></div>
+                
+                <div class="show-score">
+                    <div id="show-wins"></div>
+                    <div id="show-losses"></div>
+                </div>
                
                 <button class="reset-button" id="restart" type="button" onclick="startGame()">Restart Game</button>
                
