@@ -1,0 +1,50 @@
+        body {
+            background-image: url("../images/pexels-photo-239898.jpeg");
+        }
+
+        h1 {
+            font-family: 'Gloria Hallelujah', cursive;
+        }
+
+        .gamebox {
+            width: 33%;
+            background-color: silver;
+        }
+        #jumbotron-1{
+            display: none;
+        }
+
+        #status {
+            float:right;
+        }
+
+        .testBox{
+            margin: auto;
+            text-align: center;
+            margin: 10%;
+            height: 400px;
+            width: 80%;
+            /* background-color: teal; */
+            background-color: coral;
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+
+        .button, .reset-button {
+            background-color: coral;
+            /* background-color: #4CAF50; */
+            border: none;
+            color: white;
+            padding: 15px 25px;
+            text-align: center;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .button:hover , .reset-button:hover {
+            background-color: teal;
+        }
+
+        #restart, .show-score {
+            display: none;
+        }

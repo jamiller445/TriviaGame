@@ -1,93 +1,27 @@
 
-<!-- triva game.html -->
+<!-- trivia game.html -->
 
 <!DOCTYPE html>
 <html lang="en-us">
-    <title>Triva Time</title>
+    <title>Trivia Time</title>
 
 <head>
-<!-- Bring in our bootstrap stylesheet -->
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- <link rel="stylesheet" type="text/css" href="assets/css/reset.css"> -->
+    <link href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="assets/javascript/triva.js"></script>
-    <style>
-        /* * {
-            box-sizing: border-box;
-            text-align: center;
-        } */
-        
-        .gamebox {
-            width: 33%;
-            background-color: silver;
-        }
-        #jumbotron-1{
-            display: none;
-        }
-
-        #status {
-            float:right;
-        }
-
-        .testBox{
-            margin: auto;
-            text-align: center;
-            margin: 10%;
-            height: 500px;
-            width: 80%;
-            background-color: teal;
-            padding-top: 10px;
-        }
-
-        /* .choices{
-            display: none;
-            background-color: teal;
-            /* background-color: #4CAF50; */
-            /* border: none;
-            color: white;
-            padding: 15px 25px;
-            text-align: center;
-            font-size: 16px;
-            cursor: pointer;
-        }  */
-
-        /* .choices:hover{
-            background-color: green;  
-        } */
-
-        /* .choices:hover{
-            margin: auto;
-            width: 50%;
-            background-color: palevioletred;
-        } */
-
-        .button, .reset-button {
-            background-color: teal;
-            /* background-color: #4CAF50; */
-            border: none;
-            color: white;
-            padding: 15px 25px;
-            text-align: center;
-            font-size: 16px;
-            cursor: pointer;
-        }
-
-        .button:hover , .reset-button:hover {
-            background-color: green;
-        }
-
-        #restart, .show-score {
-            display: none;
-        }
-
-    </style>
-    </head>
+    
+</head>
     <body>
 
         <div class="testBox">
-            <h1>Time to Play the Triva Game</h1>
+            <h1>Time to Play the Trivia Game</h1>
             <button class="button" id="start-button" type="button" onclick="startGame()">Click Me To Start</button>
             
             <div id="show-number"></div>
@@ -102,7 +36,7 @@
             </div>
                 <div id="show-status"></div>
                 <div id="show-answer"></div>
-                
+
                 <div class="show-score">
                     <div id="show-wins"></div>
                     <div id="show-losses"></div>
