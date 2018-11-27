@@ -21,38 +21,58 @@ var trivaQ = {
         arrayOfQ: [
                     {
                     qText: "What does HTML stand for?",
-                    aText: 2,
-                    multipleChoices: ["wrong1,1", 
-                                      "wrong1,2",
+                    aText: 1,
+                    multipleChoices: ["Hyperlinks and Text Markup Language", 
                                       "Hyper Text Markup Language", 
-                                      "wrong1,3"]
+                                      "Home Tool Markup Language"]
                     },
                     {
                     qText: "What does CSS stand for?",
                     aText: 0,
                     multipleChoices: ["Casscading Style Sheet",
-                                      "wrong2,1", 
-                                      "wrong2,2", 
-                                      "wrong2,3"]
+                                      "Colorful Style Sheets", 
+                                      "Creative Style Sheets", 
+                                      "Computer Style Sheets"]
                     },
                     {
                     qText: "What is your best source of help during Coding BootCamp?",
                     aText: 3,
-                    multipleChoices: ["wrong3,1", 
-                                      "wrong3,2",
-                                      "wrong3,3",
+                    multipleChoices: ["The Postman", 
+                                      "Your Uncle",
+                                      "The Web for Dummies book",
                                       "Your neighbor siting next to you"]
+                    },
+                    {
+                      qText: "Which sign does jQuery use as a shortcut for jQuery?",
+                      aText: 1,
+                      multipleChoices: ["the ? Sign",
+                                        "the $ Sign",
+                                        "the % sign"]
+                    },
+                    {
+                      qText: " Which of the following is correct?",
+                      aText: 0,
+                      multipleChoices: ["jQuery is a JavaScript Library",
+                                        "jQuery is a JSON Library"]
+                    },
+                    {
+                      qText: "Bootstrap 3 is mobile-first.",
+                      aText: 0,
+                      multipleChoices: ["True",
+                                        "False"]
                     }
-                ]
-        
+                ]    
     }
 
     function getQuestion(q) {
       
         qNum = q; 
+
+        $(".button").empty();
     
         $("#show-question").html("<h3>" + trivaQ.arrayOfQ[qNum].qText + "</h3>");
-        for (mc = 0; mc < 4; mc++){
+        // for (mc = 0; mc < 4; mc++){
+        for (mc = 0; mc < trivaQ.arrayOfQ[qNum].multipleChoices.length ; mc++){
 
         $("#show-choices" + mc).html("<button class='button' id='choice' type='button' value=" + mc + ">" + trivaQ.arrayOfQ[qNum].multipleChoices[mc] + "</button>");
         
