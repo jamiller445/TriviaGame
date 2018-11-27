@@ -1,12 +1,8 @@
-// game.js
-
-
+// trivia.js
 
 var wins = 0;
 var losses = 0;
-var unanswerd;
-// var time = 30;
-
+var unanswered = 0;
 var timer = 10;
 var number = timer;
 
@@ -51,30 +47,15 @@ var trivaQ = {
         
     }
 
-//     for (i = 0; i<3 ; i++){
-//         n = i + 1;
-// console.log("question " +  n + " = "  + trivaQ.arrayOfQ[i].qText);
-// console.log("multiple choices: " + trivaQ.arrayOfQ[i].multipleChoices);
-// console.log("answer to question" +  n + "= " + trivaQ.arrayOfQ[i].aText);
-// }
-
-// run();
-// decrement();
-
-    // ********************  function definitions  ********************************
-
     function getQuestion(q) {
       
         qNum = q; 
     
         $("#show-question").html("<h3>" + trivaQ.arrayOfQ[qNum].qText + "</h3>");
         for (mc = 0; mc < 4; mc++){
-            
-        // console.log("choices= " + trivaQ.arrayOfQ[i].multipleChoices[mc])
 
         $("#show-choices" + mc).html("<button class='button' id='choice' type='button' value=" + mc + ">" + trivaQ.arrayOfQ[qNum].multipleChoices[mc] + "</button>");
-        // $("#show-choices" + mc).html("<h3 class='choices' data=" + mc + ">" + trivaQ.arrayOfQ[qNum].multipleChoices[mc] + "</h3>");
-        // $(".choices").html("<h3>" + trivaQ.arrayOfQ[i].multipleChoices[mc] + "</h3>");
+        
         };
       };
 
@@ -108,63 +89,36 @@ var trivaQ = {
         //  Once number hits zero...
         if (number === 0) {  
 
-            // console.log("answer index= " + i);
-            
-          $("#show-status").html("<h4>Out of Time!</h4><h4>The Correct Answer was:</h4>");
-        //   $("#show-answer").html("<h6>" + trivaQ.arrayOfQ[i].multipleChoices[trivaQ.arrayOfQ[i].aText] + "</h6>")
-
-               
-           //  ...run the stop function.
+         //  ...run the stop function.
           stop();
           getAnswer(ques);
+          $("#show-status").html("<h4>Out of Time!</h4><h4>The Correct Answer was:</h4>");
+          unanswered++;
           $("#show-status").show();
           $("#show-answer").show();
 
-          //  Alert the user that time is up.
-          // alert("Time Up! The game has ended");
-
           ques++;
-          losses++;
 
-      if (ques < trivaQ.arrayOfQ.length) {
+          if (ques < trivaQ.arrayOfQ.length) {
 
-        // wait for a few seconds then show next question
+          // wait for a few seconds then show next question
 
-        number = timer;        
-
-        // $("#show-question", "#show-choices0", 
-        //   "#show-choices1", "#show-choices2",
-        //   "#show-choices3").empty();
+          number = timer;        
 
           setTimeout(startGame,3000);
 
-         }
-         else {
+          }
 
-          //  display restart game button
+          else {
+
           ques = 0;
           number = timer;
 
-          $(".show-score").show();
-          $("#show-wins").html("<h4>Wins: " + wins + "</h4/");
-          $("#show-losses").html("<h4>Losses: " + losses + "</h4>");
+          restartGame();
 
-          wins = 0;
-          losses = 0;
-
-          $("#restart").show()
-
-         }
-      
-    
-          
-// *****************************************************
-
+          }
         }
       }
-
-// ******  end of decrement  ***********  
-
 
 //  The stop function
     function stop() {
@@ -174,16 +128,14 @@ var trivaQ = {
         //  to the clearInterval function.
 
         clearInterval(intervalId);
-      }
-
-    // *********************************************************  
+      } 
 
     function startGame() {
 
       $(document).ready(function() {
-      
-      
 
+      $("#wrong").hide();
+      $("#correct").hide();
       $(".show-score").hide();
       $("#restart").hide();
       $("#start-button").hide();
@@ -206,9 +158,6 @@ function playGame(q) {
   $("#questionAndChoices").show();
   $(".choices").show();
 
-  // console.log("isRunning in playGame= " + isRunning);
-
-  // $(".choices").on("click", function() {
     $(".button").on("click", function() {
     // dataChoice = parseInt($(this).attr('data'));
     dataChoice = parseInt($(this).attr('value'));
@@ -234,7 +183,8 @@ function playGame(q) {
 
       getAnswer(qNum);
 
-      // ques +=1;
+      $("#correct").css("display", "block");
+
       ques++;
 
       if (ques < trivaQ.arrayOfQ.length) {
@@ -249,15 +199,10 @@ function playGame(q) {
 
           //  display restart game button
           ques = 0;
-          
-          $(".show-score").show();
-          $("#show-wins").html("<h4>Wins: " + wins + "</h4/");
-          $("#show-losses").html("<h4>Losses: " + losses + "</h4>");
 
-          wins = 0;
-          losses = 0;
-          
-          $("#restart").show()
+          $("#correct").css("display", "block");
+
+          restartGame();
 
          }
       }
@@ -279,8 +224,8 @@ function playGame(q) {
 
       getAnswer(qNum);
 
-       // next question
-      //  ques += 1; 
+      $("#wrong").css("display", "block");
+
       ques++;
 
       if (ques < trivaQ.arrayOfQ.length) {
@@ -294,23 +239,28 @@ function playGame(q) {
           //  display restart game button
           ques = 0;
 
-          $(".show-score").show();
-          $("#show-wins").html("<h4>Wins: " + wins + "</h4/");
-          $("#show-losses").html("<h4>Losses: " + losses + "</h4>");
-
-          wins = 0;
-          losses = 0;
-
-          $("#restart").show()
+          restartGame();
 
          }
       }
-  
-      
-      // ques +=1;
-      // setTimeout(startGame,3000);
-      
-    
 }); 
-
 };
+
+function restartGame() {
+
+  setTimeout(function() {
+    $("#wrong").hide();
+    $("#correct").hide();
+    $("#show-answer").hide();
+    $("#show-status").html("<h4>All Done, Here's your score!</h4>");
+    $(".show-score").show(); 
+    $("#show-wins").html("<h4>Wins: " + wins + "</h4/");
+    $("#show-losses").html("<h4>Losses: " + losses + "</h4/");
+    $("#show-unanswered").html("<h4>Unanswered: " + unanswered + "</h4>");
+    wins = 0;
+    losses = 0;
+    unanswered = 0;
+    $("#restart").show();
+  },3000);
+
+}
